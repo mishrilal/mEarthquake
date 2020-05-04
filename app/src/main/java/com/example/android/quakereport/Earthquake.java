@@ -40,10 +40,10 @@ public class Earthquake {
      */
     private String mUrl;
 
+
     /**
      * Constructs a new {@link Earthquake} object.
-     *
-     * @param magnitude          is the magnitude (size) of the earthquake
+     *  @param magnitude          is the magnitude (size) of the earthquake
      * @param location           is the location where the earthquake happened
      * @param timeInMilliseconds is the time in milliseconds (from the Epoch) when the
      *                           earthquake happened
@@ -55,6 +55,7 @@ public class Earthquake {
         mTimeInMilliseconds = timeInMilliseconds;
         mUrl = url;
     }
+
 
     /**
      * Returns the magnitude of the earthquake.

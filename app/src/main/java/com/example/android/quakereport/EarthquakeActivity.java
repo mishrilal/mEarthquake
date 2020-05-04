@@ -42,7 +42,7 @@ public class EarthquakeActivity extends AppCompatActivity
      * URL for earthquake data from the USGS dataset
      */
     private static final String USGS_REQUEST_URL =
-            "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&orderby=time&minmag=6&limit=10";
+            "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&orderby=time&latitude=21.146633&longitude=79.088860&maxradiuskm=1700&starttime=1428172200000&limit=100";
 
     /**
      * Constant value for the earthquake loader ID. We can choose any integer.
@@ -78,6 +78,7 @@ public class EarthquakeActivity extends AppCompatActivity
         // so the list can be populated in the user interface
         earthquakeListView.setAdapter(mAdapter);
 
+
         // Set an item click listener on the ListView, which sends an intent to a web browser
         // to open a website with more information about the selected earthquake.
         earthquakeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -89,11 +90,20 @@ public class EarthquakeActivity extends AppCompatActivity
                 // Convert the String URL into a URI object (to pass into the Intent constructor)
                 Uri earthquakeUri = Uri.parse(currentEarthquake.getUrl());
 
-                // Create a new intent to view the earthquake URI
-                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, earthquakeUri);
+//                // Create a new intent to view the earthquake URI
+//                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, earthquakeUri);
+//
+//                // Send the intent to launch a new activity
+//                startActivity(websiteIntent);
 
-                // Send the intent to launch a new activity
-                startActivity(websiteIntent);
+                String url = currentEarthquake.toString();
+
+                Intent i = new Intent(EarthquakeActivity.this, EarthquakeMore.class);
+                i.putExtra("json", url);
+                startActivity(i);
+
+
+
             }
         });
 

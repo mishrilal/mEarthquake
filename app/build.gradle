@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 26
+    buildToolsVersion '29.0.3'
 
     defaultConfig {
         applicationId 'ml.mishri.quakereport'
-        minSdkVersion 15
-        targetSdkVersion 23
+        minSdkVersion 23
+        targetSdkVersion 26
         versionName '0.8.5.6'
     }
     buildTypes {
