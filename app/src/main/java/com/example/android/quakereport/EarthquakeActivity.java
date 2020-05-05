@@ -90,16 +90,36 @@ public class EarthquakeActivity extends AppCompatActivity
                 // Convert the String URL into a URI object (to pass into the Intent constructor)
                 Uri earthquakeUri = Uri.parse(currentEarthquake.getUrl());
 
+                String alert = currentEarthquake.getAlert();
+                String location = currentEarthquake.getLocation();
+                double longitude = currentEarthquake.getLongitude();
+                double latitude = currentEarthquake.getLatitude();
+                double depth = currentEarthquake.getDepth();
+                double magnitude = currentEarthquake.getMagnitude();
+                long time = currentEarthquake.getTimeInMilliseconds();
+                int tsunami = currentEarthquake.getTsunami();
+
+
+
+
 //                // Create a new intent to view the earthquake URI
 //                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, earthquakeUri);
 //
 //                // Send the intent to launch a new activity
 //                startActivity(websiteIntent);
 
-                String url = currentEarthquake.toString();
-
                 Intent i = new Intent(EarthquakeActivity.this, EarthquakeMore.class);
-                i.putExtra("json", url);
+
+                i.putExtra("uri", earthquakeUri);
+                i.putExtra("alert", alert);
+                i.putExtra("location", location);
+                i.putExtra("longitude", longitude);
+                i.putExtra("latitude", latitude);
+                i.putExtra("depth", depth);
+                i.putExtra("magnitude", magnitude);
+                i.putExtra("time", time);
+                i.putExtra("tsunami", tsunami);
+
                 startActivity(i);
 
 

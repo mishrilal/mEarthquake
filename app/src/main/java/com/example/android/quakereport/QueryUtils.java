@@ -196,9 +196,27 @@ public final class QueryUtils {
                 // Extract the value for the key called "url"
                 String url = properties.getString("url");
 
+//                Double intensity = properties.getDouble("mmi");
+                String alert = properties.getString("alert");
+                int tsunami = properties.getInt("tsunami");
+
+
+                JSONObject geometry = currentEarthquake.getJSONObject("geometry");
+                JSONArray coordinates = geometry.getJSONArray("coordinates");
+
+                Double longitude = coordinates.getDouble(0);
+                Double latitude = coordinates.getDouble(1);
+                Double depth = coordinates.getDouble(2);
+//
+//                JSONObject products = properties.getJSONObject("products");
+//                JSONArray productType = products.getJSONArray("productType");
+//                JSONObject productTypeArray = productType.getJSONObject(0);
+//
+//                String status = productTypeArray.getString("status");
+
                 // Create a new {@link Earthquake} object with the magnitude, location, time,
                 // and url from the JSON response.
-                Earthquake earthquake = new Earthquake(magnitude, location, time, url);
+                Earthquake earthquake = new Earthquake(magnitude, location, time, url, longitude, latitude, depth, alert, tsunami);
 
                 // Add the new {@link Earthquake} to the list of earthquakes.
                 earthquakes.add(earthquake);
