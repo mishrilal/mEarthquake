@@ -43,6 +43,7 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
      * whether or not there is a location offset present ("5km N of Cairo, Egypt").
      */
     private static final String LOCATION_SEPARATOR = " of ";
+    private static final String LOCATION_CHECK = ", ";
 
     /**
      * Constructs a new {@link EarthquakeAdapter}.

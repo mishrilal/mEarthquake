@@ -46,6 +46,7 @@ public class Earthquake {
     private double mDepth;
 
     private int mTsunami;
+    private double mIntensity;
 
 
     /**
@@ -58,7 +59,7 @@ public class Earthquake {
      * @param url                is the website URL to find more details about the earthquake
      */
     public Earthquake(double magnitude, String location, long timeInMilliseconds, String url,
-                      Double longitude, Double latitude, Double depth, String alert, int tsunami) {
+                      double longitude, double latitude, double depth, String alert, int tsunami) {
         mMagnitude = magnitude;
         mLocation = location;
         mTimeInMilliseconds = timeInMilliseconds;
@@ -68,6 +69,10 @@ public class Earthquake {
         mDepth = depth;
         mAlert = alert;
         mTsunami = tsunami;
+    }
+
+    public double getIntensity() {
+        return mIntensity;
     }
 
 

@@ -42,6 +42,7 @@ public final class QueryUtils {
      * Tag for the log messages
      */
     private static final String LOG_TAG = QueryUtils.class.getSimpleName();
+    private static final String LOCATION_SEPARATOR = ", ";
 
     /**
      * Create a private constructor because no one should ever create a {@link QueryUtils} object.
@@ -188,7 +189,10 @@ public final class QueryUtils {
                 double magnitude = properties.getDouble("mag");
 
                 // Extract the value for the key called "place"
-                String location = properties.getString("place");
+                String originalLocation = properties.getString("place");
+
+                //Location Filter
+
 
                 // Extract the value for the key called "time"
                 long time = properties.getLong("time");
@@ -196,7 +200,7 @@ public final class QueryUtils {
                 // Extract the value for the key called "url"
                 String url = properties.getString("url");
 
-//                Double intensity = properties.getDouble("mmi");
+                //Double intensity = properties.getDouble("cdi");
                 String alert = properties.getString("alert");
                 int tsunami = properties.getInt("tsunami");
 
@@ -216,10 +220,14 @@ public final class QueryUtils {
 
                 // Create a new {@link Earthquake} object with the magnitude, location, time,
                 // and url from the JSON response.
+
+
+                String location = originalLocation;
                 Earthquake earthquake = new Earthquake(magnitude, location, time, url, longitude, latitude, depth, alert, tsunami);
 
                 // Add the new {@link Earthquake} to the list of earthquakes.
                 earthquakes.add(earthquake);
+
             }
 
         } catch (JSONException e) {

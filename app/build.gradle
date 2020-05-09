@@ -5,7 +5,7 @@ android {
     buildToolsVersion '29.0.3'
 
     defaultConfig {
-        applicationId 'ml.mishri.quakereport'
+        applicationId 'ml.mishri.mearthquake'
         minSdkVersion 23
         targetSdkVersion 26
         versionName '0.8.5.6'
