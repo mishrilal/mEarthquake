@@ -1,18 +1,3 @@
-/*
- * Copyright (C) 2016 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.example.android.quakereport;
 
 import android.text.TextUtils;
@@ -37,6 +22,7 @@ import java.util.List;
  * Helper methods related to requesting and receiving earthquake data from USGS.
  */
 public final class QueryUtils {
+
 
     /**
      * Tag for the log messages
@@ -192,25 +178,36 @@ public final class QueryUtils {
                 String originalLocation = properties.getString("place");
 
                 //Location Filter
+                String location_Break = ", ";
+
+                if (originalLocation.contains(location_Break)) {
+                    String[] parts = originalLocation.split(location_Break);
+                    originalLocation = parts[1];
+                }
+
+                String loc = EarthquakeActivity.getLocation();
+
+                if(!loc.equals("World")) {
+                    if (originalLocation.equals(loc)) {
 
 
-                // Extract the value for the key called "time"
-                long time = properties.getLong("time");
+                        // Extract the value for the key called "time"
+                        long time = properties.getLong("time");
 
-                // Extract the value for the key called "url"
-                String url = properties.getString("url");
+                        // Extract the value for the key called "url"
+                        String url = properties.getString("url");
 
-                //Double intensity = properties.getDouble("cdi");
-                String alert = properties.getString("alert");
-                int tsunami = properties.getInt("tsunami");
+                        //Double intensity = properties.getDouble("cdi");
+                        String alert = properties.getString("alert");
+                        int tsunami = properties.getInt("tsunami");
 
 
-                JSONObject geometry = currentEarthquake.getJSONObject("geometry");
-                JSONArray coordinates = geometry.getJSONArray("coordinates");
+                        JSONObject geometry = currentEarthquake.getJSONObject("geometry");
+                        JSONArray coordinates = geometry.getJSONArray("coordinates");
 
-                Double longitude = coordinates.getDouble(0);
-                Double latitude = coordinates.getDouble(1);
-                Double depth = coordinates.getDouble(2);
+                        Double longitude = coordinates.getDouble(0);
+                        Double latitude = coordinates.getDouble(1);
+                        Double depth = coordinates.getDouble(2);
 //
 //                JSONObject products = properties.getJSONObject("products");
 //                JSONArray productType = products.getJSONArray("productType");
@@ -218,16 +215,55 @@ public final class QueryUtils {
 //
 //                String status = productTypeArray.getString("status");
 
-                // Create a new {@link Earthquake} object with the magnitude, location, time,
-                // and url from the JSON response.
+                        // Create a new {@link Earthquake} object with the magnitude, location, time,
+                        // and url from the JSON response.
 
 
-                String location = originalLocation;
-                Earthquake earthquake = new Earthquake(magnitude, location, time, url, longitude, latitude, depth, alert, tsunami);
+                        String location = properties.getString("place");
+                        Earthquake earthquake = new Earthquake(magnitude, location, time, url, longitude, latitude, depth, alert, tsunami);
 
-                // Add the new {@link Earthquake} to the list of earthquakes.
-                earthquakes.add(earthquake);
+                        // Add the new {@link Earthquake} to the list of earthquakes.
+                        earthquakes.add(earthquake);
 
+                    }
+                }
+                else {
+
+
+                    // Extract the value for the key called "time"
+                    long time = properties.getLong("time");
+
+                    // Extract the value for the key called "url"
+                    String url = properties.getString("url");
+
+                    //Double intensity = properties.getDouble("cdi");
+                    String alert = properties.getString("alert");
+                    int tsunami = properties.getInt("tsunami");
+
+
+                    JSONObject geometry = currentEarthquake.getJSONObject("geometry");
+                    JSONArray coordinates = geometry.getJSONArray("coordinates");
+
+                    Double longitude = coordinates.getDouble(0);
+                    Double latitude = coordinates.getDouble(1);
+                    Double depth = coordinates.getDouble(2);
+//
+//                JSONObject products = properties.getJSONObject("products");
+//                JSONArray productType = products.getJSONArray("productType");
+//                JSONObject productTypeArray = productType.getJSONObject(0);
+//
+//                String status = productTypeArray.getString("status");
+
+                    // Create a new {@link Earthquake} object with the magnitude, location, time,
+                    // and url from the JSON response.
+
+
+                    String location = properties.getString("place");
+                    Earthquake earthquake = new Earthquake(magnitude, location, time, url, longitude, latitude, depth, alert, tsunami);
+
+                    // Add the new {@link Earthquake} to the list of earthquakes.
+                    earthquakes.add(earthquake);
+                }
             }
 
         } catch (JSONException e) {

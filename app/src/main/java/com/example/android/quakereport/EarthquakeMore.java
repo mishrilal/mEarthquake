@@ -14,7 +14,7 @@ import java.util.Date;
 public class EarthquakeMore extends AppCompatActivity {
 
     private static final String LOCATION_SEPARATOR = " of ";
-    String formattedLatitude;
+    String formattedLatitude ;
     String formattedLongitude;
     double mLatitude;
     double mLongitude;
@@ -29,6 +29,7 @@ public class EarthquakeMore extends AppCompatActivity {
          * Getting Data from EarthquakeActivity
          */
         Bundle bundle = getIntent().getExtras();
+
 
         String alert = bundle.getString("alert");
         String location = bundle.getString("location");

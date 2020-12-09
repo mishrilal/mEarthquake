@@ -1,18 +1,3 @@
-/*
- * Copyright (C) 2016 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.example.android.quakereport;
 
 import android.app.LoaderManager;
@@ -57,6 +42,8 @@ public class EarthquakeActivity extends AppCompatActivity
      * Adapter for the list of earthquakes
      */
     private EarthquakeAdapter mAdapter;
+
+    private static String location;
 
     /**
      * TextView that is displayed when the list is empty
@@ -126,6 +113,8 @@ public class EarthquakeActivity extends AppCompatActivity
 
                 startActivity(i);
 
+
+
             }
         });
 
@@ -161,20 +150,20 @@ public class EarthquakeActivity extends AppCompatActivity
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         String minMagnitude = sharedPrefs.getString(
-                getString(R.string.settings_min_magnitude_key),
-                getString(R.string.settings_min_magnitude_default));
+                getString(R.string.settings_min_magnitude_key).trim(),
+                getString(R.string.settings_min_magnitude_default).trim());
 
         String limit = sharedPrefs.getString(
-                getString(R.string.settings_no_of_earthquakes_key),
-                getString(R.string.settings_no_of_earthquakes_default));
+                getString(R.string.settings_no_of_earthquakes_key).trim(),
+                getString(R.string.settings_no_of_earthquakes_default).trim());
 
         String orderBy = sharedPrefs.getString(
-                getString(R.string.settings_order_by_key),
-                getString(R.string.settings_order_by_default));
+                getString(R.string.settings_order_by_key).trim(),
+                getString(R.string.settings_order_by_default).trim());
 
-        String location = sharedPrefs.getString(
-                getString(R.string.settings_location_key),
-                getString(R.string.settings_location_default));
+        location = sharedPrefs.getString(
+                getString(R.string.settings_location_key).trim(),
+                getString(R.string.settings_location_default).trim());
 
         Uri baseUri = Uri.parse(USGS_REQUEST_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
@@ -182,11 +171,9 @@ public class EarthquakeActivity extends AppCompatActivity
         uriBuilder.appendQueryParameter("format", "geojson");
         uriBuilder.appendQueryParameter("minmag", minMagnitude);
         uriBuilder.appendQueryParameter("orderby", orderBy);
-        uriBuilder.appendQueryParameter("latitude", "21.146633");
-        uriBuilder.appendQueryParameter("longitude", "79.088860");
-        uriBuilder.appendQueryParameter("maxradiuskm", "1700");
-        uriBuilder.appendQueryParameter("starttime", "1428172200000");
-        uriBuilder.appendQueryParameter("limit", limit);
+
+//        uriBuilder.appendQueryParameter("limit", limit);
+//        uriBuilder.appendQueryParameter("starttime", "1428172200000");
 
         return new EarthquakeLoader(this, uriBuilder.toString());
     }
@@ -231,6 +218,10 @@ public class EarthquakeActivity extends AppCompatActivity
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public static String getLocation(){
+        return location;
     }
 
 }

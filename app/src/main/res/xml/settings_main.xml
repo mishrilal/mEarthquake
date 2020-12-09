@@ -7,28 +7,24 @@
         android:entries="@array/settings_order_by_labels"
         android:entryValues="@array/settings_order_by_values"
         android:key="@string/settings_order_by_key"
-        android:title="@string/settings_order_by_label" />
+        android:title="@string/settings_order_by_label"/>
 
     <EditTextPreference
         android:defaultValue="@string/settings_min_magnitude_default"
         android:inputType="numberDecimal"
         android:key="@string/settings_min_magnitude_key"
         android:selectAllOnFocus="true"
-        android:title="@string/settings_min_magnitude_label" />
-
-    <EditTextPreference
-        android:defaultValue="@string/settings_no_of_earthquakes_default"
-        android:inputType="numberDecimal"
-        android:key="@string/settings_no_of_earthquakes_key"
-        android:selectAllOnFocus="true"
-        android:title="@string/settings_no_of_earthquakes_label" />
+        android:title="@string/settings_min_magnitude_label"/>
 
     <EditTextPreference
         android:defaultValue="@string/settings_location_default"
         android:inputType="textCapWords"
         android:key="@string/settings_location_key"
         android:selectAllOnFocus="true"
-        android:title="@string/settings_location_label" />
+        android:title="@string/settings_location_label"
+        android:hint="Eg. World, India, etc. "/>
+
+
 
 
 </PreferenceScreen>

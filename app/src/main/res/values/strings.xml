@@ -1,17 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!-- Copyright (C) 2016 The Android Open Source Project
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-
-          http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Title for the application. [CHAR LIMIT=12] -->
     <string name="app_name">mEarthQuake</string>
@@ -27,7 +14,6 @@
     <string name="no_internet_connection">No internet connection.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- Settings Menu Item [CHAR LIMIT=NONE] -->
     <string name="settings_menu_item">Settings</string>
@@ -37,17 +23,16 @@
     <!-- Strings For Minimum Magnitude Preference [CHAR LIMIT=30] -->
     <string name="settings_min_magnitude_label">Minimum Magnitude</string>
     <string name="settings_min_magnitude_key" translatable="false">min_magnitude</string>
-    <string name="settings_min_magnitude_default" translatable="false">6</string>
+    <string name="settings_min_magnitude_default" translatable="false">3</string>
 
     <!-- Strings For No. of Earthquake Preference [CHAR LIMIT=30] -->
-    <string name="settings_no_of_earthquakes_label">No. of Earthquakes</string>
     <string name="settings_no_of_earthquakes_key" translatable="false">limit</string>
     <string name="settings_no_of_earthquakes_default" translatable="false">20</string>
 
     <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
     <string name="settings_order_by_label">Order By</string>
     <string name="settings_order_by_key" translatable="false">order_by</string>
-    <string name="settings_order_by_default" translatable="false">@string/settings_order_by_magnitude_value</string>
+    <string name="settings_order_by_default" translatable="false">@string/settings_order_by_most_recent_value</string>
 
     <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
     <string name="settings_order_by_magnitude_label">Magnitude</string>
@@ -58,7 +43,7 @@
     <string name="settings_order_by_most_recent_value" translatable="false">time</string>
 
     <!-- Strings For Location Preference [CHAR LIMIT=30] -->
-    <string name="settings_location_label">Location</string>
+    <string name="settings_location_label">Location (Country Name)</string>
     <string name="settings_location_key" translatable="false">place</string>
     <string name="settings_location_default" translatable="false">India</string>
 </resources>

@@ -19,24 +19,29 @@ public class SettingActivity extends AppCompatActivity {
     public static class EarthquakePreferenceFragment extends PreferenceFragment implements
             Preference.OnPreferenceChangeListener {
 
+
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_main);
 
-            Preference minMagnitude = findPreference(getString(R.string.settings_min_magnitude_key));
+            Preference minMagnitude = findPreference(getString(R.string.settings_min_magnitude_key).trim());
             bindPreferenceSummaryToValue(minMagnitude);
 
-            Preference orderBy = findPreference(getString(R.string.settings_order_by_key));
+            Preference orderBy = findPreference(getString(R.string.settings_order_by_key).trim());
             bindPreferenceSummaryToValue(orderBy);
 
-            Preference limit = findPreference(getString(R.string.settings_no_of_earthquakes_key));
-            bindPreferenceSummaryToValue(limit);
-
-            Preference location = findPreference(getString(R.string.settings_location_key));
+            Preference location = findPreference(getString(R.string.settings_location_key).trim());
             bindPreferenceSummaryToValue(location);
         }
 
+//        @Override
+//        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//            View view = super.onCreateView(inflater, container, savedInstanceState);
+//            Context context = getContext();
+//            view.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimaryDark));
+//            return view;
+//        }
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
             String stringValue = value.toString();
@@ -59,5 +64,8 @@ public class SettingActivity extends AppCompatActivity {
             String preferenceString = preferences.getString(preference.getKey(), "");
             onPreferenceChange(preference, preferenceString);
         }
+
     }
+
+
 }
